@@ -8,14 +8,19 @@ variable "name_sa" {
   default = "storage-account"
 }
 
-variable "name_fa" {
+variable "name_lfa" {
   type = string
-  default = "function-app"
+  default = "linux-function-app"
 }
 
 variable "name_sp" {
   type = string
   default = "service-plan"
+}
+
+variable "name_faf" {
+  type = string
+  default = "function-app-function"
 }
 
 variable "location" {
