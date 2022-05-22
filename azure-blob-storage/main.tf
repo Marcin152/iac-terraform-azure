@@ -1,26 +1,26 @@
-resource "azurerm_resource_group" "example" {
-  name     = "example-resources"
-  location = "West Europe"
+resource "azurerm_resource_group" "rg" {
+  name     = var.name_rg
+  location = var.location
 }
 
-resource "azurerm_storage_account" "example" {
-  name                     = "examplestoracc"
-  resource_group_name      = azurerm_resource_group.example.name
-  location                 = azurerm_resource_group.example.location
-  account_tier             = "Standard"
-  account_replication_type = "LRS"
+resource "azurerm_storage_account" "sa" {
+  name                     = var.name_sa
+  resource_group_name      = azurerm_resource_group.rg.name
+  location                 = azurerm_resource_group.rg.location
+  account_tier             = var.account_tier
+  account_replication_type = var.replication_type
 }
 
-resource "azurerm_storage_container" "example" {
-  name                  = "content"
-  storage_account_name  = azurerm_storage_account.example.name
-  container_access_type = "private"
+resource "azurerm_storage_container" "sc" {
+  name                  = var.name.sc
+  storage_account_name  = azurerm_storage_account.sa.name_sa
+  container_access_type = var.container_acces_type
 }
 
-resource "azurerm_storage_blob" "example" {
-  name                   = "my-awesome-content.zip"
-  storage_account_name   = azurerm_storage_account.example.name
-  storage_container_name = azurerm_storage_container.example.name
-  type                   = "Block"
-  source                 = "some-local-file.zip"
+resource "azurerm_storage_blob" "sb" {
+  name                   = var.name_sb
+  storage_account_name   = azurerm_storage_account.sa.name_sa
+  storage_container_name = azurerm_storage_container.sc.name_sc
+  type                   = var.type
+  source                 = var.source
 }
