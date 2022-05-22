@@ -1,6 +1,21 @@
-variable "name" {
+variable "name_r" {
   type = string
   default = "resource-group"
+}
+
+variable "name_sa" {
+  type = string
+  default = "storage-account"
+}
+
+variable "name_fa" {
+  type = string
+  default = "function-app"
+}
+
+variable "name_sp" {
+  type = string
+  default = "service-plan"
 }
 
 variable "location" {
@@ -20,3 +35,19 @@ variable "account_replication_type" {
   type = string
   default = "LRS"
 }  
+
+variable "os_type" {
+  type = string
+  default = "Linux"
+}
+
+variable "sku_name" {
+  type = string
+  default = "S1"
+}
+  
+variable "language" {
+  type = string
+  default = "Python"
+}
+  
